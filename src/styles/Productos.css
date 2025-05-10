@@ -1,0 +1,17 @@
+
+
+.grilla-productos{
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1rem;
+}
+
+
+/*MEDIA QUERIES*/
+/*======================================*/
+@media screen and (max-width: 576px) {
+    .grilla-productos{
+        grid-template-columns: 1fr;
+    }
+}
