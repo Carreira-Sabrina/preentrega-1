@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 //Css
 import "../styles/Productos.css"
-//Servicios
-import { obtenerProductosAPI } from "../services/servicioProductos";
+
 //Componentes
 import TarjetaProducto from "../components/TarjetaProducto";
 import Cargando from "../components/Cargando";
