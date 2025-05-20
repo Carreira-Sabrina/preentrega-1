@@ -1,12 +1,17 @@
-import "../styles/Navbar.css"
 import { useState } from "react"
 import { Link } from "react-router-dom";
+
+//Css
+import "../styles/Navbar.css"
+
 //React icons
 import { GiHamburgerMenu } from "react-icons/gi"; //menu hamburguesa
 import { FaTimes } from "react-icons/fa"; // boton X
 import { FaHouseChimney } from "react-icons/fa6";
 import { FaGift } from "react-icons/fa6";
 import { FaCartShopping } from "react-icons/fa6";
+import { FaUserCheck } from "react-icons/fa6"; //<FaUserCheck /> login ok
+import { FaUserXmark } from "react-icons/fa6"; // <FaUserXmark /> login no
 
 function Navbar(){
 
@@ -47,7 +52,6 @@ function Navbar(){
                     </Link>
                 </li>
                 <li>
-                    {/*Esto despues lleva un icono de carrito */}
                     <Link   to="/carrito" 
                             onClick={cerrarMenuMovil}
                             className="nav-link">
@@ -58,7 +62,11 @@ function Navbar(){
 
             {/* Para mostar o no el menu movil*/}
             <div>
-                <GiHamburgerMenu className="btn-menu-movil" onClick={cambiarMenuMovil}/>
+                {/*El ícono cambia según el menu está abierto o cerrado*/}
+                {
+                    mostrarMenuMovil    ? < FaTimes className="btn-menu-movil" onClick={cambiarMenuMovil}/>
+                                        : <GiHamburgerMenu className="btn-menu-movil" onClick={cambiarMenuMovil}/>
+                }
             </div>
         </nav>
     )
