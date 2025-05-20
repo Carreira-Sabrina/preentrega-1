@@ -5,22 +5,53 @@ import "../styles/Productos.css"
 import { obtenerProductosAPI } from "../services/servicioProductos";
 //Componentes
 import TarjetaProducto from "../components/TarjetaProducto";
-
+import Cargando from "../components/Cargando";
+import Error from "../components/Error";
 
 function Productos(){
-    const [productos, setProductos] = useState([])
+    const [productos, setProductos] = useState([]);
+    const [cargando, setCargando] = useState(true);
+    const [error, setError] = useState("");
 
     
 
     useEffect(()=>{
 
         async function cargarProductosApi(){
-            const productosApi = await obtenerProductosAPI();
-            setProductos(productosApi);
+            try {
+                const API_URL = "https://fakestoreapi.com/products"
+
+                const respuesta = await fetch(API_URL);
+                const productosApi = await respuesta.json()
+                setProductos(productosApi);
+                setCargando(false)
+            } catch (error) {
+                setCargando(false)
+                console.log(error)
+                setError(error)
+            }
         }
         cargarProductosApi()
         
     },[])
+
+    //Estado de carga
+    if(cargando){
+        return(
+            <>
+                <Cargando/>
+            </>
+        )
+    }
+
+    //Estado de error
+    if(error){
+        return(
+            <>
+                <Error/>
+            </>
+        )
+    }
 
 
     return(

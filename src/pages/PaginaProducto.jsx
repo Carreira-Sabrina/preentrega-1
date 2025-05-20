@@ -7,11 +7,13 @@ import "../styles/PaginaProducto.css"
 //Contexto 
 import { ContextoCarrito } from "../context/ContextoCarrito";
 
-//Componentes
-import Cargando from "../components/Cargando";
-
 //React icons
 import { FaCartPlus } from "react-icons/fa6";
+
+//Componentes
+import Cargando from "../components/Cargando";
+import Error from "../components/Error";
+
 
 //Tuve que poner el producto en un estado porque el async... bueno...
 
@@ -21,7 +23,7 @@ function PaginaProducto(){
 
     const [producto,setProducto] = useState({})
     const [cargando, setCargando] = useState(true)
-    const [error, setError] = useState("") // Como inicializar esto? boolean?
+    const [error, setError] = useState("")
 
     //Functiones que vinen del contexto
     const {contenidoCarrito,agregarProductoAlCarrito} = useContext(ContextoCarrito)
@@ -49,23 +51,35 @@ function PaginaProducto(){
         async function obtenerProductoAPiPorId(id) {      
             try {
                 const respuesta = await fetch(`${API_URL}/${id}`);
-                const productoAPI = await respuesta.json()
+                const productoAPI = await respuesta.json();
             
                 setProducto(productoAPI);
                 setCargando(false)
         
             } catch (error) {
+                setCargando(false)
                 console.log(error)
+                setError(error)
             }
         }
 
         obtenerProductoAPiPorId(id)
     },[])
 
+    //Estado de carga
     if(cargando){
         return(
             <>
                 <Cargando/>
+            </>
+        )
+    }
+
+    //Estado de error
+    if(error){
+        return(
+            <>
+                <Error/>
             </>
         )
     }
@@ -106,6 +120,4 @@ function PaginaProducto(){
     )
 
 }
-
-
 export default PaginaProducto;
