@@ -1,8 +1,11 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { Link } from "react-router-dom";
 
 //Css
 import "../styles/Navbar.css"
+
+//Contexto
+import { ContextoCarrito } from "../context/ContextoCarrito";
 
 //React icons
 import { GiHamburgerMenu } from "react-icons/gi"; //menu hamburguesa
@@ -16,6 +19,8 @@ import { FaUserXmark } from "react-icons/fa6"; // <FaUserXmark /> login no
 function Navbar(){
 
     const [mostrarMenuMovil, setMostrarMenuMovil] = useState(false);
+
+    const {contenidoCarrito, usuarioLoggeado} = useContext(ContextoCarrito)
 
     function cambiarMenuMovil(){
         setMostrarMenuMovil(!mostrarMenuMovil);
@@ -56,8 +61,25 @@ function Navbar(){
                             onClick={cerrarMenuMovil}
                             className="nav-link">
                             Carrito <span><FaCartShopping /></span>
+                            <span className="numero-carrito">{contenidoCarrito.length}</span>
                     </Link>
                 </li>
+
+                {/*El botón de login */}
+                <Link   to="/login"
+                        onClick={cerrarMenuMovil}
+                        className = "btn-login"
+                        >
+
+                            <span>
+                                {
+                                    usuarioLoggeado ?  <span> Usuario loggeado <FaUserCheck/></span>
+                                                    :  <span> Login <FaUserXmark /></span>
+                                }
+                            </span>
+                            
+                </Link>
+
             </ul>
 
             {/* Para mostar o no el menu movil*/}

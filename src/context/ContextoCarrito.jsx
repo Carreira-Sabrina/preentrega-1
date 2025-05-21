@@ -74,6 +74,8 @@ export function ProveedorContextoCarrito({children}){
 
     return(
         <ContextoCarrito.Provider   value={{contenidoCarrito,
+                                            usuarioLoggeado,
+                                            setUsuarioLoggeado,
                                             setContenidoCarrito, 
                                             agregarProductoAlCarrito,
                                             eliminarProductoDelCarrito,

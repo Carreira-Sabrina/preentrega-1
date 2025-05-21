@@ -37,6 +37,13 @@ nav ul{
     font-size: 1.5rem;
 }
 
+.numero-carrito{
+    margin-left: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border: 2px solid var(--color-fandango);
+    border-radius: 50%;
+}
+
 
 
 /*Estilos del boton de menu movil*/
@@ -45,6 +52,19 @@ nav ul{
     color: var(--color-fandango);
     cursor: pointer;
     display:none;
+}
+
+
+/*Boton login*/
+.btn-login{
+    font-size: 1.5rem;
+    text-decoration: none;
+    vertical-align: text-top;
+    display: inline-block;
+    padding: 0.5rem 0.85rem;
+    border-radius: 14px;
+    color: var(--color-magnolia);
+    background-color: var(--color-chrysler-blue);
 }
 
 
