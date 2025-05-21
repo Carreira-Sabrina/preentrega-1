@@ -11,7 +11,7 @@ function Login(){
     const {usuarioLoggeado, setUsuarioLoggeado} = useContext(ContextoCarrito);
 
     return(
-        <main>
+        <main className="login-main">
             <h1>
                 Bienvenido 
                 {
@@ -19,16 +19,14 @@ function Login(){
                                     : " invitado, necesitás iniciar sesión para acceder al carrito"
                 }
             
-            <section>
-                <button onClick={()=>setUsuarioLoggeado(!usuarioLoggeado)}>
-                    {
-                        usuarioLoggeado ? "Cerrar sesión"
-                                        : "Iniciar sesión"
-                    }
-                </button>
-            </section>
-
             </h1>
+            <button className="btn-login" onClick={()=>setUsuarioLoggeado(!usuarioLoggeado)}>
+                {
+                    usuarioLoggeado ? "Cerrar sesión"
+                                    : "Iniciar sesión"
+                }
+            </button>
+            
         </main>
         
     )

@@ -2,6 +2,9 @@ import { useContext,useState,useEffect } from "react";
 //Css
 import "../styles/Carrito.css"
 
+//SweetAlert
+import Swal from 'sweetalert2'        
+
 //Contexto 
 import { ContextoCarrito } from "../context/ContextoCarrito";
 
@@ -53,9 +56,9 @@ function Carrito(){
             </section>
             <section className="display-checkout-carrito">
                     <h3>Resumen de tu compra</h3>
-                    <p>Total <span>{totalCarrito}</span></p>
-                    <button>Finalizar compra <span><FaCircleCheck /></span></button>
-                    <button>Vaciar carrito <span></span><FaCircleXmark /></button>
+                    <p>Total $ <span>{totalCarrito}</span></p>
+                    <button>Finalizar compra <span className="icono-btn-carrito icono-btn__comprar"><FaCircleCheck /></span></button>
+                    <button>Vaciar carrito <span className="icono-btn-carrito icono-btn__cancelar"><FaCircleXmark/> </span></button>
             </section>
 
             
