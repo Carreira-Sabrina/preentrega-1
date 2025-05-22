@@ -14,12 +14,10 @@ function Footer(){
             <h2 className="footer-titulo">Seguinos en nuestras redes sociales !</h2>
 
             <div className="container-redes">
-            <FaFacebook className="redes-logo"/>
-            <FaYoutube className="redes-logo"/>
-            <FaInstagramSquare className="redes-logo"/>
-            <FaTwitter className="redes-logo"/>
-
-
+                <FaFacebook className="redes-logo"/>
+                <FaYoutube className="redes-logo"/>
+                <FaInstagramSquare className="redes-logo"/>
+                <FaTwitter className="redes-logo"/>
             </div>
         </footer>
     )
