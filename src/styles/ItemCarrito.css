@@ -52,3 +52,18 @@
 .producto__data__subtotal p span{
     font-weight: bold;
 }
+
+
+
+/*MEDIA QUERIES */
+/*================*/
+
+
+
+@media screen and (max-width: 1024px) {
+    .producto__data__cantidad{
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.5rem;
+    }
+}

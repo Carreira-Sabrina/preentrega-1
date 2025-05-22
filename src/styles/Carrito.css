@@ -5,6 +5,10 @@
     gap: 1.5rem;
 }
 
+.contenedor_carrito_vacio{
+    font-size: 2rem;
+}
+
 .display-checkout-carrito{
     margin:0 auto;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
@@ -46,5 +50,18 @@
 }
 
 
+/*MEDIA QUERIES*/
+/*======================================*/
 
+/*Tamaños de mayor a menor*/
 
+@media screen and (max-width: 1024px) {
+    .contenedor_carrito{
+        grid-template-columns: 1fr;
+    }
+    .display-checkout-carrito{
+        /*Se muestra primero la tarjeta del checkout*/
+        grid-row: 1;
+        padding: 3rem;
+    }
+}

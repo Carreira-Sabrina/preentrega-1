@@ -16,8 +16,8 @@ function ItemCarrito({producto}){
     //Contexto
     const {     contenidoCarrito,
                 setContenidoCarrito,
-                eliminarProductoDelCarrito,//Esto hace falta? si, ver el contecto
-                vaciarCarrito} = useContext(ContextoCarrito)
+                eliminarProductoDelCarrito,
+                } = useContext(ContextoCarrito)
 
 
     const [datosProducto, setDatosProducto] = useState(producto)

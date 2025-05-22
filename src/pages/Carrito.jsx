@@ -17,14 +17,8 @@ import { FaCircleXmark } from "react-icons/fa6"; //<FaCircleXmark />
 
 
 function Carrito(){
-
-    //Functiones y estado que vinen del contexto ME DOY CUENTA QUE LO UNICO QUE ESTOY USANDO ES contenidoCarrito 🦜🦜🦜🦜🦜
-    const { contenidoCarrito,
-            agregarProductoAlCarrito,
-            aumentarCantidadProductoCarrito,
-            disminuirCantidadProductoCarrito,
-            eliminarProductoDelCarrito,
-            vaciarCarrito} = useContext(ContextoCarrito)
+    //Functiones y estado que vinen del contexto
+    const { contenidoCarrito, vaciarCarrito} = useContext(ContextoCarrito)
     
     //Funcion auxiliar para calcular el total del carrito
     function calcularTotalCarrito(){
@@ -103,30 +97,42 @@ function Carrito(){
     },[contenidoCarrito])
 
     return(
-        <main className="contenedor_carrito">
-
-            <section className="display-productos-carrito">
+        <main>
             <h1>Tu carrito</h1>
-                {
-                    contenidoCarrito.length > 0 ?
-                    contenidoCarrito.map((item)=>(
-                    <ItemCarrito key={item.id} producto={item} />
-                    )   )
-                : <p>Tu carrito esta vacio</p>
-            }
-            </section>
-            <section className="display-checkout-carrito">
-                    <h3>Resumen de tu compra</h3>
-                    <p>Total $ <span>{totalCarrito}</span></p>
-                    <button 
-                        onClick={handleFinalizarCompra}>
-                            Finalizar compra <span className="icono-btn-carrito icono-btn__comprar"><FaCircleCheck /></span>
-                    </button>
-                    <button 
-                        onClick={handleVaciarCarrito}>Vaciar carrito <span className="icono-btn-carrito icono-btn__cancelar"><FaCircleXmark/></span>
-                    </button>
-            </section>
 
+            <div className="contenedor_carrito">
+
+                <section className="display-productos-carrito">
+                
+                    {
+                        contenidoCarrito.length > 0 ?
+                            contenidoCarrito.map((item)=>(
+                            <ItemCarrito key={item.id} producto={item} />
+                            )   )
+                    : <p className="contenedor_carrito_vacio">Tu carrito está vacio</p>
+                    }
+                </section>
+                
+                {/*Sólo muestro el checkout si hay algo en el carrito */}
+                {
+                    contenidoCarrito.length > 0 &&
+
+                    <section className="display-checkout-carrito">
+                        <h3>Resumen de tu compra</h3>
+                        <p>Total $ <span>{totalCarrito}</span></p>
+                        <button 
+                            onClick={handleFinalizarCompra}>
+                                Finalizar compra <span className="icono-btn-carrito icono-btn__comprar"><FaCircleCheck /></span>
+                        </button>
+                        <button 
+                            onClick={handleVaciarCarrito}>Vaciar carrito <span className="icono-btn-carrito icono-btn__cancelar"><FaCircleXmark/></span>
+                        </button>
+                </section>
+
+                }
+                
+                
+            </div>
             
         </main>
     )
