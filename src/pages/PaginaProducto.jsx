@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 
 //Css
@@ -55,14 +55,12 @@ function PaginaProducto(){
             
                 setProducto(productoAPI);
                 setCargando(false)
-        
             } catch (error) {
                 setCargando(false)
                 console.log(error)
                 setError(error)
             }
         }
-
         obtenerProductoAPiPorId(id)
     },[])
 
@@ -108,10 +106,13 @@ function PaginaProducto(){
                         <button className="btn-tarjeta-producto btn-agregar-carrito" 
                                 onClick={()=>enviarProductoAlCarrito(producto)}>
                                 Agregar al carrito <span><FaCartPlus /></span>
-                        
                         </button>
-
+                        <div className="contenerdor-navegacion">
+                        <Link to="/productos" className="btn-navegacion">Volver al listado de productos</Link>
+                        </div>
                     </div>
+
+                    
 
                 </article>
             }

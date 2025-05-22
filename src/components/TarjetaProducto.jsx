@@ -32,7 +32,6 @@ function TarjetaProducto({producto}){
                     <button className="btn-tarjeta-producto btn-agregar-carrito" 
                             onClick={()=>agregarProductoAlCarrito(producto)}>
                                 Agregar al carrito <span><FaCartPlus /></span>
-
                     </button>
 
                     <Link to={`/productos/${id}`} className="btn-tarjeta-producto btn-pagina-dinamica">

@@ -38,40 +38,48 @@ function Carrito(){
 
     //Manejador del botón finalizar compra
     function handleFinalizarCompra(){
-        console.log("Gracias por tu compra")
-        //Disparar sweetAlert
-        Swal.fire({
-            title: "Estás listo para finalizar tu compra?",
-            text: `Total a pagar $ ${totalCarrito}`,
-            showDenyButton: true,
-            showCancelButton: false,
-            confirmButtonText: "Pagar",
-            denyButtonText: `Volver al carrito`
+        //Sólo se puede comprar si hay algo en el carrito !
+        if(contenidoCarrito.length >0){
+            //Disparar sweetAlert
+            Swal.fire({
+                title: "Estás listo para finalizar tu compra?",
+                text: `Total a pagar $ ${totalCarrito}`,
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: "Pagar",
+                denyButtonText: `Volver al carrito`
         }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
-        if (result.isConfirmed) {
-            Swal.fire("Muchas gracias por tu compra !", "", "success");
+                if (result.isConfirmed) {
+                    Swal.fire("Muchas gracias por tu compra !", "", "success");
             //El carro se vacía acá
-            vaciarCarrito()
-        } else if (result.isDenied) {
-            Swal.fire("Volvés al carrito", "", "info");
+                    vaciarCarrito()
+                } else if (result.isDenied) {
+                    Swal.fire("Volvés al carrito", "", "info");
+                }
+            });
+        }else{
+            Swal.fire({
+                title: "Tu carrito está vacío",
+                text: "Por qué no eliges algunos productos?",
+                icon: "info"
+                });
         }
-        });
+        
     }
 
     //Manejador del botón de vaciar carrito
     function handleVaciarCarrito(){
-        console.log("Se vacia el carrito, que pena")
-        //Preguntar con sweetAlert?
-        Swal.fire({
-            icon: "question",
-            title: "Estas seguro que quieres vaciar el carrito?",
-            showDenyButton: true,
-            showCancelButton: false,
-            confirmButtonText: "Vaciar el carrito",
-            denyButtonText: `No vaciar el carrito`
-        }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
+        if(contenidoCarrito.length >0){
+            //Preguntar con sweetAlert?
+            Swal.fire({
+                icon: "question",
+                title: "Estas seguro que quieres vaciar el carrito?",
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: "Vaciar el carrito",
+                denyButtonText: `No vaciar el carrito`
+            }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire("Tu carrito ha sido vaciado", "", "success");
                 //Acá se vacía el carrito
@@ -79,9 +87,14 @@ function Carrito(){
             } else if (result.isDenied) {
                 Swal.fire("Volvés al carrito", "", "info");
             }
-        });
-
-        //Vaciar carrito
+            });
+        }else{
+            Swal.fire({
+                title: "Carrito vacío",
+                text: "No puedes vaciar algo que ya está vacío ;)",
+                icon: "info"
+            });
+        }  
     }
 
     //Disparar el cambio de total en carrito
@@ -105,8 +118,13 @@ function Carrito(){
             <section className="display-checkout-carrito">
                     <h3>Resumen de tu compra</h3>
                     <p>Total $ <span>{totalCarrito}</span></p>
-                    <button onClick={handleFinalizarCompra}>Finalizar compra <span className="icono-btn-carrito icono-btn__comprar"><FaCircleCheck /></span></button>
-                    <button onClick={handleVaciarCarrito}>Vaciar carrito <span className="icono-btn-carrito icono-btn__cancelar"><FaCircleXmark/> </span></button>
+                    <button 
+                        onClick={handleFinalizarCompra}>
+                            Finalizar compra <span className="icono-btn-carrito icono-btn__comprar"><FaCircleCheck /></span>
+                    </button>
+                    <button 
+                        onClick={handleVaciarCarrito}>Vaciar carrito <span className="icono-btn-carrito icono-btn__cancelar"><FaCircleXmark/></span>
+                    </button>
             </section>
 
             
