@@ -42,3 +42,13 @@
 .bento-box-E{
     grid-area: bb-e;
 }
+
+
+/*MEDIA QUERIES*/
+/*========================*/
+
+@media screen and (max-width: 1024px) {
+    .bento{
+        grid-template-columns: 1fr;
+    }
+}

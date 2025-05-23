@@ -20,8 +20,6 @@ function Bento(){
             <div className="bento-box bento-box-E">
                 5
             </div>
-
-
         </main>
     )
 
